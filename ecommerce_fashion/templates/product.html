@@ -1,0 +1,47 @@
+{% extends "blank_layout.html" %}
+{% load static %}
+
+{% block content %}
+
+  {% include 'product_list.html' %}
+
+
+{% comment %} <div class="container-fluid">
+    <div class="row">
+          {% for i in product_list %}
+      <div class="col-md-3" >
+      <div class="card" style="width: 16rem;margin-top:30px;">
+        <a href="{% url 'products:detail_product' i.id %}"><img src="{{ i.image.url}}" height="300 px" width="100%" class="card-img-top" alt="no image"></a>
+        <div class="card-body">
+          <h5 class="card-title">{{i.title}}</h5>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+            <p class="card-text">{{i.price}}</p>
+            <p class="card-text">{{i.description}}</p>
+        </div>
+      </div>
+      </div>
+      {% endfor%}
+        </div>
+      </div>
+
+
+    
+    <div class="page-btn"> 
+        {% if product_list.has_previous %}
+        <a href="?page={{product_list.previous_page_number }}"><span><<</span></a>
+        {% endif %}
+        {% for i in product_list.paginator.page_range %}
+        <a href="?page={{i}}"><span>{{i}}</span></a>
+        {% endfor %}
+        {% if product_list.has_next %}
+        <a href="?page={{product_list.next_page_number }}"><span><<</span></a>
+        {% endif %}
+    </div> {% endcomment %}
+
+{% endblock content %}

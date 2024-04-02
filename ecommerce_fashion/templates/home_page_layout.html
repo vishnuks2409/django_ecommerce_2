@@ -1,0 +1,58 @@
+{% load static%}
+<!-- Feadtued Categories -->
+  
+  <div class="categories">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-3">
+                <img src="{% static 'images/category-1.jpg' %}">
+            </div>
+            <div class="col-3">
+                <img src="{% static 'images/category-2.jpg' %}">
+            </div>
+            <div class="col-3">
+                <img src="{% static 'images/category-3.jpg' %}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Featured Products -->
+
+<div class="small-container">
+    <h2 class="title">Featured Products</h2>
+    <div class="row">
+        {% for i in featured_products %}
+        <div class="col-4">
+            <a href="{% url 'products:detail_product' i.id %}"><img src="{{ i.image.url}}" height="300 px" width="100%" class="card-img-top" alt="no image"></a>            <h4>{{ i.title }}</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+            <p>${{ i.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <h2 class="title">Latest Products</h2>
+    <div class="row">
+        {% for j in latest_products %}
+        <div class="col-4">
+            <a href="{% url 'products:detail_product' j.id %}"><img src="{{ j.image.url}}" height="300 px" width="100%" class="card-img-top" alt="no image"></a>
+
+            <h4>{{ j.title }}</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+            <p>${{ j.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
